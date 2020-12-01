@@ -1,4 +1,4 @@
-package com.example.springbootresttesting.payroll;
+package com.example.springbootresttesting.payroll.employee;
 
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
