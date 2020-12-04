@@ -18,8 +18,8 @@ class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(EmployeeRepository employeeRepository, OrderRepository orderRepository) {
         return args -> {
-            employeeRepository.save(new Employee("Bilbo", "Baggins", "burglar"));
-            employeeRepository.save(new Employee("Frodo", "Baggins", "thief"));
+            employeeRepository.save(new Employee("Bilbo", "Baggins", "burglar", "This guy is a burglar."));
+            employeeRepository.save(new Employee("Frodo", "Baggins", "thief", "This guy is a thief -- which is pretty much like a burglar."));
 
             employeeRepository.findAll().forEach(employee -> {
                 log.info("Preloaded " + employee);

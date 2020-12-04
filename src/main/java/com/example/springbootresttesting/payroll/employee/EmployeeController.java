@@ -60,6 +60,7 @@ class EmployeeController {
                 .map(employee -> {
                     employee.setName(newEmployee.getName());
                     employee.setRole(newEmployee.getRole());
+                    employee.setDescription(newEmployee.getDescription());
                     return repository.save(employee);
                 })
                 .orElseGet(() -> {

@@ -13,15 +13,18 @@ public final class Employee {
     private String firstName;
     private String lastName;
     private String role;
+    private String description;
 
     public Employee() {}
 
-    public Employee(String firstName, String lastName, String role) {
+    public Employee(String firstName, String lastName, String role, String description) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
+        this.description = description;
     }
+
 
     public String getName() {
         return this.firstName + " " + this.lastName;
@@ -65,6 +68,14 @@ public final class Employee {
         this.role = role;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
 
@@ -75,17 +86,17 @@ public final class Employee {
 
         Employee employee = (Employee) o;
 
-        return (employee.id == this.id && employee.firstName == this.firstName && employee.lastName == this.lastName && employee.role == this.role);
+        return (employee.id == this.id && employee.firstName == this.firstName && employee.lastName == this.lastName && employee.role == this.role && employee.description == this.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.firstName, this.lastName, this.role);
+        return Objects.hash(this.id, this.firstName, this.lastName, this.role, this.description);
     }
 
     @Override
     public String toString() {
         return "Employee{" + "id=" + this.id + ", firstName='" + this.firstName + '\'' + ", lastName='" + this.lastName
-                + '\'' + ", role='" + this.role + '\'' + '}';
+                + '\'' + ", role='" + this.role + '\'' + ", description='" + this.description + '\'' + '}';
     }
 }
