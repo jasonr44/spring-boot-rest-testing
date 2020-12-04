@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.example.springbootresttesting.SpringbootresttestingApplication.BASE_PATH;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -17,7 +18,7 @@ class EmployeeController {
     private final EmployeeRepository repository;
     private final EmployeeModelAssembler assembler;
 
-    public static final String EMPLOYEES_ROUTE = "/employees";
+    public static final String EMPLOYEES_ROUTE = BASE_PATH + "/employees";
     public static final String ID_PARAMETER = "{id}";
     public static final String EMPLOYEES_ID_PARAMETER_ROUTE = EMPLOYEES_ROUTE + "/" + ID_PARAMETER;
 
@@ -53,7 +54,7 @@ class EmployeeController {
         return assembler.toModel(employee);
     }
 
-    @PutMapping("/employees/{id}")
+    @PutMapping(EMPLOYEES_ID_PARAMETER_ROUTE)
     ResponseEntity<?> replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
 
         Employee updatedEmployee = repository.findById(id)
@@ -75,7 +76,7 @@ class EmployeeController {
                 .body(entityModel);
     }
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping(EMPLOYEES_ID_PARAMETER_ROUTE)
     ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
 
         repository.deleteById(id);

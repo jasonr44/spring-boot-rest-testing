@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.example.springbootresttesting.SpringbootresttestingApplication.BASE_PATH;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ class OrderController {
     private final OrderRepository orderRepository;
     private final OrderModelAssembler assembler;
 
-    public static final String ORDERS_ROUTE = "/orders";
+    public static final String ORDERS_ROUTE = BASE_PATH + "/orders";
     public static final String ORDERS_ID_ROUTE = ORDERS_ROUTE + "/{id}";
 
     OrderController(OrderRepository orderRepository, OrderModelAssembler assembler) {
