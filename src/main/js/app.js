@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import client from './client';
+import { pathOr } from 'ramda';
+import EmployeeList from './components/EmployeeList';
 
-const App = (props) => {
+const GET_METHOD = 'GET';
+const EMPLOYEES_DATA_PATH = ['entity', '_embedded', 'employeeList'];
+const EMPLOYEES_API_PATH = '/api/employees';
+
+const App = () => {
 	const [employees, updateEmployees] = useState([]);
 
 	useEffect(() => {
-		client({ method: 'GET', path: '/api/employees' }).done(response => {
-			updateEmployees({ employees: response.entity._embedded.employees });
+		client({ method: GET_METHOD, path: EMPLOYEES_API_PATH }).done(response => {
+			updateEmployees(pathOr([], EMPLOYEES_DATA_PATH, response));
 		});
 	}, []);
 

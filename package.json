@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/jasonr44/spring-boot-rest-testing#readme",
   "dependencies": {
+    "ramda": "^0.27.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "rest": "^1.3.1"
